@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ecommerce-dev
+
+resources:
+  - ../../apps/product-service
+  - ../../apps/cart-service
+  - ../../apps/order-service
+  - ../../apps/redis
+  - ../../apps/frontend
+  - ../../apps/ingress
+
+images:
+  - name: product-service
+    newTag: v1
+
+  - name: cart-service
+    newTag: v1
+
+  - name: order-service
+    newTag: v1
+
+  - name: frontend
+    newTag: v1
+

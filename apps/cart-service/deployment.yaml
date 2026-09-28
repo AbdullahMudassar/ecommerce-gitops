@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cart-service
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: cart-service
+
+  template:
+    metadata:
+      labels:
+        app: cart-service
+
+    spec:
+      containers:
+        - name: cart-service
+          image: cart-service:v1
+
+          env:
+            - name: REDIS_URL
+              value: redis://redis:6379
+
+          ports:
+            - containerPort: 8080
