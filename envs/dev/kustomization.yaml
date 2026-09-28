@@ -4,23 +4,23 @@ kind: Kustomization
 namespace: ecommerce-dev
 
 resources:
-  - ../../apps/product-service
-  - ../../apps/cart-service
-  - ../../apps/order-service
-  - ../../apps/redis
-  - ../../apps/frontend
-  - ../../apps/ingress
+- ../../apps/product-service
+- ../../apps/cart-service
+- ../../apps/order-service
+- ../../apps/redis
+- ../../apps/frontend
+- ../../apps/ingress
+
+
+
 
 images:
-  - name: product-service
-    newTag: v1
-
-  - name: cart-service
-    newTag: v1
-
-  - name: order-service
-    newTag: v1
-
-  - name: frontend
-    newTag: v1
-
+- name: cart-service
+  newTag: v1
+- name: frontend
+  newTag: v1
+- name: order-service
+  newTag: v1
+- name: product-service
+  newName: ghcr.io/abdullahmudassar/product-service
+  newTag: 0550991345f216cb497e437381acebeeeebfda14
