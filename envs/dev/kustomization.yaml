@@ -16,7 +16,8 @@ resources:
 
 images:
 - name: cart-service
-  newTag: v1
+  newName: ghcr.io/abdullahmudassar/cart-service
+  newTag: 989e17c36a54f432e803813ca3c6f29bc3dab3de
 - name: frontend
   newTag: v1
 - name: order-service
