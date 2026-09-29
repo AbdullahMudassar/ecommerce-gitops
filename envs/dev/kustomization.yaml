@@ -24,4 +24,4 @@ images:
   newTag: v1
 - name: product-service
   newName: ghcr.io/abdullahmudassar/product-service
-  newTag: 0550991345f216cb497e437381acebeeeebfda14
+  newTag: 93f32d51e999da4ae57fcff72045f75f52f7dfb7
