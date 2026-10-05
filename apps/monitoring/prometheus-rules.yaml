@@ -1,0 +1,44 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: shop-alerts
+  namespace: ecommerce-dev
+  labels:
+    release: monitoring
+
+spec:
+  groups:
+    - name: shop.rules
+      rules:
+
+        - alert: ServiceHasNoPods
+          expr: |
+            kube_deployment_status_replicas_available{
+              namespace="ecommerce-dev",
+              deployment=~"product-service|cart-service|order-service|frontend|redis"
+            } == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Deployment has no available pods"
+            description: "{{ $labels.deployment }} has 0 available pods."
+
+        - alert: HighErrorRate
+          expr: |
+            (
+              sum by (service) (
+                rate(http_request_duration_seconds_count{status_code=~"5.."}[2m])
+              )
+              /
+              sum by (service) (
+                rate(http_request_duration_seconds_count[2m])
+              )
+            ) > 0.05
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High HTTP error rate"
+            description: "{{ $labels.service }} has more than 5% 5xx errors."
