@@ -24,6 +24,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: order-service-config
+            - secretRef:
+                name: order-secrets
 
           ports:
             - containerPort: 8080
