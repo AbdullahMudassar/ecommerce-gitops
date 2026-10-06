@@ -11,7 +11,7 @@ resources:
   - ../../apps/frontend
   - ../../apps/ingress
   - ../../apps/monitoring
-
+  - order-secrets-sealed.yaml
 images:
   - name: cart-service
     newName: ghcr.io/abdullahmudassar/cart-service
