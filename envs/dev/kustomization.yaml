@@ -4,25 +4,25 @@ kind: Kustomization
 namespace: ecommerce-dev
 
 resources:
-- ../../apps/product-service
-- ../../apps/cart-service
-- ../../apps/order-service
-- ../../apps/redis
-- ../../apps/frontend
-- ../../apps/ingress
-- ../../apps/monitoring
-- order-secrets-sealed.yaml
-
-
-
+  - ../../apps/product-service
+  - ../../apps/cart-service
+  - ../../apps/order-service
+  - ../../apps/redis
+  - ../../apps/frontend
+  - ../../apps/ingress
+  - ../../apps/monitoring
+  - order-secrets-sealed.yaml
 images:
-- name: cart-service
-  newName: ghcr.io/abdullahmudassar/cart-service
-  newTag: 989e17c36a54f432e803813ca3c6f29bc3dab3de
-- name: frontend
-  newTag: v1
-- name: order-service
-  newTag: v1
-- name: product-service
-  newName: ghcr.io/abdullahmudassar/product-service
-  newTag: 016dfcf1d9bc8b654b747a684850ea35c5732939
+  - name: cart-service
+    newName: ghcr.io/abdullahmudassar/cart-service
+    newTag: 989e17c36a54f432e803813ca3c6f29bc3dab3de
+
+  - name: frontend
+    newTag: v1
+
+  - name: order-service
+    newTag: v1
+
+  - name: product-service
+    newName: ghcr.io/abdullahmudassar/product-service
+    newTag: 93f32d51e999da4ae57fcff72045f75f52f7dfb7
