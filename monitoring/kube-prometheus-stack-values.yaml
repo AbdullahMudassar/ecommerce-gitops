@@ -3,3 +3,14 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
+
+grafana:
+  persistence:
+    enabled: true
+    size: 2Gi
+
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki-gateway.monitoring.svc.cluster.local
