@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ecommerce-prod
+
+resources:
+- ../../apps/product-service
+- ../../apps/cart-service
+- ../../apps/order-service
+- ../../apps/redis
+- ../../apps/frontend
+- order-secrets-sealed.yaml
+
+replicas:
+- name: product-service
+  count: 2
+- name: cart-service
+  count: 2
+- name: order-service
+  count: 2
+- name: frontend
+  count: 2
+
+patches:
+- target:
+    kind: HorizontalPodAutoscaler
+    name: product-service
+  patch: |-
+    - op: replace
+      path: /spec/minReplicas
+      value: 2
