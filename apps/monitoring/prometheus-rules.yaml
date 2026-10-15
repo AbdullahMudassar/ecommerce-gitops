@@ -21,6 +21,7 @@ spec:
           for: 1m
           labels:
             severity: critical
+            namespace: ecommerce-dev 
           annotations:
             summary: "Deployment has no available pods"
             description: "{{ $labels.deployment }} has 0 available pods."
@@ -39,6 +40,7 @@ spec:
           for: 2m
           labels:
             severity: warning
+            namespace: ecommerce-dev 
           annotations:
             summary: "High HTTP error rate"
             description: "{{ $labels.service }} has more than 5% 5xx errors."
