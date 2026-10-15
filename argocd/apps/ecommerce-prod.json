@@ -1,0 +1,25 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "name": "ecommerce-prod",
+    "namespace": "argocd"
+  },
+  "spec": {
+    "destination": {
+      "namespace": "ecommerce-prod",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "default",
+    "source": {
+      "path": "envs/prod",
+      "repoURL": "https://github.com/AbdullahMudassar/ecommerce-gitops.git",
+      "targetRevision": "main"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "CreateNamespace=true"
+      ]
+    }
+  }
+}
