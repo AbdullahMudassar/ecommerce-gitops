@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: shop-slack-alerts
+  namespace: ecommerce-dev
+spec:
+  route:
+    receiver: slack
+    groupBy:
+      - alertname
+    groupWait: 10s
+    groupInterval: 1m
+    repeatInterval: 1h
+
+  receivers:
+    - name: slack
+      slackConfigs:
+        - channel: '#devops-alerts'
+          sendResolved: true
+          apiURL:
+            name: slack-webhook
+            key: url

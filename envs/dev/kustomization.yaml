@@ -12,8 +12,7 @@ resources:
 - ../../apps/ingress
 - ../../apps/monitoring
 - order-secrets-sealed.yaml
-
-
+- alertmanager-slack.yaml
 
 images:
 - name: cart-service
